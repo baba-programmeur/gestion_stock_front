@@ -1,0 +1,46 @@
+
+<form #loginForm="ngForm" >
+  <li *ngFor= "let produit of produits">
+  <div class="form-group">
+    <label>{{produit.libelle}}</label>
+    <input type="text" class="form-control" name="{{produit.name}}" value="{{produit.valeur}}">
+  </div>
+
+  </li>
+  <div class="text-end">
+    <button type="submit" (click)="close()" class="cancel btn btn-cancel fa-pull-left">Annuler</button>
+
+    <button type="submit" (click)="editProduct()" [disabled]="!loginForm.form.valid" class="save  btn btn-primary fa-pull-right">Modifier</button>
+
+  </div></form>
+
+
+<!--<div class="col-md-6 offset-md-3">-->
+<!--  <h3> Update Employee </h3>-->
+
+
+<!--  <form (ngSubmit) = "editProduct()">-->
+
+<!--    <div class="form-group">-->
+<!--      <label> First Name</label>-->
+<!--      <input type="text" class ="form-control" id = "firstName"-->
+<!--             [(ngModel)] = "produits.nomProduit" name = "firstName">-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label> Last Name</label>-->
+<!--      <input type="text" class ="form-control" id = "lastName"-->
+<!--             [(ngModel)] = "produits.valeur" name = "lastName">-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label> Email Id</label>-->
+<!--      <input type="text" class ="form-control" id = "emailId"-->
+<!--             [(ngModel)] = "produits.valeur" name = "emailId">-->
+<!--    </div>-->
+
+<!--    <button class = "btn btn-success" type ="submit">Submit</button>-->
+
+<!--  </form>-->
+<!--</div>-->
+

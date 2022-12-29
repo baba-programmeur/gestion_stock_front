@@ -1,0 +1,13 @@
+<div>
+  <!-- Main Wrapper -->
+<div class="main-wrapper">
+  <div [hidden]="headeractivePath">
+    <app-header></app-header>
+  </div>
+  <div [hidden]="sideBaractivePath">
+    <app-sidebar></app-sidebar>
+  </div>
+  <router-outlet></router-outlet>
+  <!-- Main Wrapper -->
+</div>
+</div>

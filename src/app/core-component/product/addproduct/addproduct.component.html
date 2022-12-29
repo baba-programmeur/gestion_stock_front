@@ -1,0 +1,107 @@
+
+<form #loginForm="ngForm">
+<div class="form-group">
+  <label>Nom:</label>
+<!--  <div *ngIf="nom.invalid && (nom.touched || nom.dirty)" class="alert alert-danger"></div>-->
+  <input type="text" class="form-control" #nom="ngModel"  name="nom" [(ngModel)]="produit.nomProduit" required>
+</div>
+
+<div class="form-group">
+  <label>Prix:</label>
+  <input type="number" class="form-control" name="prix" [(ngModel)]="produit.prixUnitaire" required>
+</div>
+
+  <div class="form-group">
+    <label>Designation</label>
+    <input type="text" class="form-control" name="designation" [(ngModel)]="produit.designation" required>
+  </div>
+
+<div class="form-group">
+  <label>Quantite</label>
+  <input type="number" class="form-control" name="quantite" [(ngModel)]="produit.quantite" required>
+</div>
+
+<div class="text-end">
+  <button type="submit" (click)="close()"  class="cancel btn btn-cancel fa-pull-left">Annuler</button>
+
+  <button type="submit" (click)="addProduct()" [disabled]="!loginForm.form.valid" class="save  btn btn-primary fa-pull-right">Enregistrer le produit</button>
+
+</div></form>
+
+<!--<div class="row login_div">-->
+<!--  <div class="col-md-6">-->
+<!--    <div class="card">-->
+<!--      <div class="card-header">-->
+<!--        <h5 class="card-title">Ajout d'un nouveau produit</h5>-->
+<!--      </div>-->
+<!--      <div class="card-body">-->
+<!--        <form action="#">-->
+<!--          <div class="form-group">-->
+<!--            <label>Nom:</label>-->
+<!--            <input type="text" class="form-control">-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label>Prix:</label>-->
+<!--            <input type="number" class="form-control">-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label>Quantite</label>-->
+<!--            <input type="number" class="form-control">-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label>Designation</label>-->
+<!--            <input type="text" class="form-control">-->
+<!--          </div>-->
+<!--&lt;!&ndash;          <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label>Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="password" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label>Repeat Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="password" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--        </form>-->
+<!--        <div class="text-end">-->
+<!--          <button type="submit" class="btn btn-primary">Enregistrer le produit </button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--&lt;!&ndash;  <div class="col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="card">&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="card-header">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h5 class="card-title">Address Form</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="card-body">&ndash;&gt;-->
+<!--&lt;!&ndash;        <form action="#">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label>Address Line 1</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label>Address Line 2</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label>City</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label>State</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label>Country</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label>Postal Code</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </form>&ndash;&gt;-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
