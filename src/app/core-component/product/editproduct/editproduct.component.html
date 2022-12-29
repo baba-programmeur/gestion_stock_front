@@ -1,16 +1,16 @@
 
 <form #loginForm="ngForm" >
-  <li *ngFor= "let produit of produits">
+  <div *ngFor= "let produit of produits">
   <div class="form-group">
     <label>{{produit.libelle}}</label>
-    <input type="text" class="form-control" name="{{produit.name}}" value="{{produit.valeur}}">
+    <input type="text" class="form-control"  name="{{produit.name}}" value="{{produit.valeur}}">
   </div>
 
-  </li>
+  </div>
   <div class="text-end">
     <button type="submit" (click)="close()" class="cancel btn btn-cancel fa-pull-left">Annuler</button>
 
-    <button type="submit" (click)="editProduct()" [disabled]="!loginForm.form.valid" class="save  btn btn-primary fa-pull-right">Modifier</button>
+    <button type="submit" (click)="editProduct(produit)" [disabled]="!loginForm.form.valid" class="save  btn btn-primary fa-pull-right">Modifier</button>
 
   </div></form>
 

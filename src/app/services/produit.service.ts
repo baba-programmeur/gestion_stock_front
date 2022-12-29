@@ -42,4 +42,15 @@ export class ProduitService {
     return this.http.get<Produit>(this.url +'searchArticle/' +id);
   }
 
+  exporter(entities: any[]) {
+
+
+  }
+
+
+  getAllArticle():Observable<Produit>{
+
+    return this.http.get<Produit>(this.url +'allProducts');
+  }
+
 }

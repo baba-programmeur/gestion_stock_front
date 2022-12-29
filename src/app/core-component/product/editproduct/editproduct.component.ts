@@ -14,11 +14,12 @@ export class EditproductComponent implements OnInit {
 
   constructor(public dialogRef:MatDialogRef<EditproductComponent>,@Inject(MAT_DIALOG_DATA) public data:any,
               private productService:ProduitService,private activatedRoute:ActivatedRoute) { }
-
   produitCourant=new Produit();
+
   produits:any
 
-  produit:Produit
+  produit:Produit ;
+
   ngOnInit(): void {
 
   this.produits =this.data.produits ;
@@ -27,10 +28,10 @@ export class EditproductComponent implements OnInit {
 
    }
 
-  editProduct()
+  editProduct(produit:Produit)
   {
-    console.log("produits**",this.produit);
-    this.productService.editProduct(this.produit);
+    console.log("produits**",produit);
+    this.productService.editProduct(produit);
 
   }
 

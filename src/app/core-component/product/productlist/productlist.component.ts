@@ -8,6 +8,7 @@ import {Produit} from "../../../modele/produit";
 import {PageEvent} from "@angular/material/paginator";
 import {error} from "jquery";
 import {EditproductComponent} from "../editproduct/editproduct.component";
+import {firstValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-productlist',
@@ -25,6 +26,8 @@ export class ProductlistComponent implements OnInit {
   produits:Produit[]=[];
 
   totalItems:number=0 ;
+
+  entities:any[];
 
   constructor(private dialog:MatDialog,private QueryService:QueryService,private produitService:ProduitService) {
     this.QueryService.filterToggle()
@@ -50,19 +53,49 @@ export class ProductlistComponent implements OnInit {
     };
   }
 
- private  getAllArticles(request){
+  private  getAllArticles(request){
+
+ let  exporter= false ;
     this.produitService.getAllProducts(request).subscribe(( produits:any )=> {
 
-      console.log("",produits);
+      console.log("***",produits);
       if(produits){
         this.produits=produits['content'] ;
         this.totalItems=produits['totalItems'];
+
+        for(const item of this.produits){
+
+          this.entities.push({
+            object:item ,
+            values:[
+                item.nomProduit ,
+                item.prixUnitaire,
+                item.quantite,
+                item.designation,
+                item.date_creation
+            ]
+          });
+          }
        }
-      // error =>{
-      //   console.log(error.error.messages)
-      // }
+      if(exporter){
+
+        this.produitService.exporter(this.entities)
+
+      }
 
     });
+  }
+
+
+  getAllArticle(){
+
+
+  firstValueFrom(this.produitService.getAllArticle()).then(
+
+    //root5261? mdp ==> moodle
+
+  )  ;
+
   }
 
   nextPage(event:PageEvent){
@@ -83,10 +116,10 @@ export class ProductlistComponent implements OnInit {
       width:'400px',
       data:{
        produits:[
-         {libelle:'nom', valeur:produit.nomProduit},
-         {libelle:'quantite',valeur:produit.quantite},
-         {libelle:'prixUnitaire', valeur:produit.prixUnitaire},
-         {libelle:'designation',valeur:produit.designation}
+         {libelle:'nom', valeur:produit.nomProduit,name:'nom'},
+         {libelle:'quantite',valeur:produit.quantite,name:'quantite'},
+         {libelle:'prixUnitaire', valeur:produit.prixUnitaire,name:'prix'},
+         {libelle:'designation',valeur:produit.designation,name:'designation'}
        ]
       }
     }
@@ -111,7 +144,6 @@ export class ProductlistComponent implements OnInit {
       customClass: {
         cancelButton: 'btn btn-danger ',
         confirmButton: 'btn btn-primary',
-
       },
 
     }).then(resulat =>{
